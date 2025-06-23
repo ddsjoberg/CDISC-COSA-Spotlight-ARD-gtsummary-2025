@@ -22,7 +22,7 @@ title-slide-attributes:
 ## Today's Plan
 
 -   Briefest Introduction to Analysis Results Standard (ARS) and Analysis Results Data (ARD)
-    
+
 -   ARDs with the {cards}+{cardx} packages
 
 -   How {gtsummary} and {cards} work together
@@ -45,13 +45,13 @@ title-slide-attributes:
 
 ## CDISC's Analysis Results Standard (ARS)
 
-![](images/ars-example-flow2-hex.png){fig-align="center" }
+![](images/ars-example-flow2-hex.png){fig-align="center"}
 
-- The ARS provides a metadata-driven infrastructure for analysis
+-   The ARS provides a metadata-driven infrastructure for analysis
 
-- {cards} serves as the engine for the analysis 
+-   {cards} serves as the engine for the analysis
 
-- {gtsummary} is the engine for summary tables
+-   {gtsummary} is the engine for summary tables
 
 ## Analysis Results Data (ARD)
 
@@ -65,19 +65,17 @@ title-slide-attributes:
 
 ## Analysis Results Data (ARD)
 
-* After the initial creation of an ARD, the results can later be re-used again and again for subsequent reporting needs.
+-   After the initial creation of an ARD, the results can later be re-used again and again for subsequent reporting needs.
 
 ![](images/ard-flow.png){fig-align="center"}
 
+# ARDs using {cards}
 
-# ARDs using {cards} 
-
-<a href="https://insightsengineering.github.io/cards/"><img src="https://insightsengineering.github.io/cards/latest-tag/logo.png" align="center" height="300" alt="cards website" /></a>
+<a href="https://insightsengineering.github.io/cards/"><img src="https://insightsengineering.github.io/cards/latest-tag/logo.png" alt="cards website" align="center" height="300"/></a>
 
 ## {cards}: Introduction
 
-::: {.larger}
-
+::: larger
 -   Part of the Pharmaverse
 
 -   Contains a variety of utilities for creating ARDs
@@ -85,7 +83,6 @@ title-slide-attributes:
 -   Can be used within the ARS workflow and separately
 
 -   52K downloads per month 🤯
-
 :::
 
 ## What does an ARD look like?
@@ -101,12 +98,11 @@ ADSL |>
   )
 ```
 
-
 ## What does an ARD look like?
 
-- We just saw the default statistics returned in the previous example
+-   We just saw the default statistics returned in the previous example
 
-- It's simple to pass _any_ function to `ard_continuous()` (base R functions, functions from other package, user-defined functions, etc.)
+-   It's simple to pass *any* function to `ard_continuous()` (base R functions, functions from other package, user-defined functions, etc.)
 
 ```{r}
 #| message: true
@@ -130,21 +126,19 @@ ADSL |>
   ) 
 ```
 
-::: {.small}
-
-_Any unobserved levels of the variables appear in the ARD._
-
+::: small
+*Any unobserved levels of the variables appear in the ARD.*
 :::
 
-## {cards}: Other Summary Functions 
+## {cards}: Other Summary Functions
 
-- `ard_dichotomous()`: similar to `ard_categorical()`, but for dichotomous summaries
+-   `ard_dichotomous()`: similar to `ard_categorical()`, but for dichotomous summaries
 
-- `ard_hierarchical()`: similar to `ard_categorical()`, but built for nested tabulations, e.g. AE terms within SOC
+-   `ard_hierarchical()`: similar to `ard_categorical()`, but built for nested tabulations, e.g. AE terms within SOC
 
-- `ard_complex()`: similar to `ard_continuous()`, but the summary functions can be more complex and accepts other arguments like the full and subsetted (within the by groups) data sets.
+-   `ard_complex()`: similar to `ard_continuous()`, but the summary functions can be more complex and accepts other arguments like the full and subsetted (within the by groups) data sets.
 
-- `ard_missing()`: tabulates rates of missingness
+-   `ard_missing()`: tabulates rates of missingness
 
 The results from all these functions are entirely compatible with one another, and can be stacked into a single data frame. 🥞
 
@@ -160,34 +154,33 @@ The results from all these functions are entirely compatible with one another, a
 
 ## {cardx}
 
--   Exports ARD frameworks for statistical analyses from many packages 
+-   Exports ARD frameworks for statistical analyses from many packages
 
-::: {.larger}
-
-      - {stats}
-      - {car}
-      - {effectsize}
-      - {emmeans}
-      - {geepack}
-      - {lme4}
-      - {parameters}
-      - {smd}
-      - {survey}
-      - {survival}
-
+::: larger
+```         
+  - {stats}
+  - {car}
+  - {effectsize}
+  - {emmeans}
+  - {geepack}
+  - {lme4}
+  - {parameters}
+  - {smd}
+  - {survey}
+  - {survival}
+```
 :::
 
 -   This list is growing (rather quickly) 🌱
 
 ::: aside
-
-{cards} provides a general framework to easily implement _any_ method. {cardx} provides a nicer user experience for common methods.
-
+{cards} provides a general framework to easily implement *any* method. {cardx} provides a nicer user experience for common methods.
 :::
 
 ## Other {cards} Resources
 
 <!-- Copied from the cards website on 2025-06-21 -->
+
 <!-- https://github.com/insightsengineering/cards/blob/main/pkgdown/index.Rmd -->
 
 ```{r, echo=FALSE}
@@ -223,13 +216,13 @@ Our First ARD-Based Filing Experience with {cards}+{gtsummary}", "https://www.da
   )
 ```
 
-Listing available on the {cards} website: [https://insightsengineering.github.io/cards/latest-tag/#other-resources](https://insightsengineering.github.io/cards/latest-tag/#other-resources)
+Listing available on the {cards} website: <https://insightsengineering.github.io/cards/latest-tag/#other-resources>
 
 # Tables with {gtsummary}
 
 ## 
 
-::::::::: columns
+:::::::: columns
 :::::: {.column width="60%"}
 ### How it started
 
@@ -255,17 +248,15 @@ Listing available on the {cards} website: [https://insightsengineering.github.io
 ::::
 ::::::
 
-:::: {.column width="40%"}
+::: {.column width="40%"}
 <img src="images/gtsummary-logo.png" width="650"/>
+:::
+::::::::
 
-::::
-:::::::::
+## 
 
-##
-
-::::::::: columns
-:::::: {.column width="60%"}
-
+::::: columns
+::: {.column width="60%"}
 -   Won the 2021 American Statistical Association (ASA) Innovation in Programming Award
 
 <img src="images/asa.png" width="250"/>
@@ -273,15 +264,12 @@ Listing available on the {cards} website: [https://insightsengineering.github.io
 -   Agustin Calatroni and I won the 2024 Posit Pharma Table Contest by re-creating an entire CSR with the {gtsummary} package
 
 <img src="images/posit.png" width="280"/>
+:::
 
-::::::
-
-:::: {.column width="40%"}
+::: {.column width="40%"}
 <img src="images/gtsummary-logo.png" width="650"/>
-
-::::
-:::::::::
-
+:::
+:::::
 
 ## {gtsummary} runs on ARDs!
 
@@ -307,7 +295,7 @@ tbl
 
 ## Demographics Example
 
-- Extract the ARD from the table object
+-   Extract the ARD from the table object
 
 ```{r}
 #| message: true
@@ -335,13 +323,13 @@ dplyr::filter(pharmaverseadam::adsl, SAFFL == "Y") |>
 
 ## Other {gtsummary} structures
 
-- Hierarchical summary tables, e.g. AE or Con Med summaries
+-   Hierarchical summary tables, e.g. AE or Con Med summaries
 
-- Cross tabulations
+-   Cross tabulations
 
-- "Continuous" summaries, i.e. summarize statistics by two categorical variables
+-   "Continuous" summaries, i.e. summarize statistics by two categorical variables
 
-- General summaries; great for highly bespoke tables and listings
+-   General summaries; great for highly bespoke tables and listings
 
 ## Other {gtsummary} resources
 
@@ -375,32 +363,31 @@ dplyr::tribble(
 
 ## {gtsummary} + Pharma Reporting 👷🏗️
 
-- {crane} R package
+-   {crane} R package
 
-    - An extension to {gtsummary} specifically for pharma reporting.
+    -   An extension to {gtsummary} specifically for pharma reporting.
 
-    - Includes function to make the most common reporting at Roche a breeze.
-    
-    - There is a lot there already, and we anticipate its first official release this Fall. [https://insightsengineering.github.io/crane/main/](https://insightsengineering.github.io/crane/main/)
-    
-- Cardinal Initiative
+    -   Includes function to make the most common reporting at Roche a breeze.
 
-    - Industry collaborative effort under pharmaverse that brings together pharmaceutical companies with the aspiration of building and open-sourcing a catalog of harmonized tables, listings, and graphs (TLGs) in clinical study reporting.
-    
-    - The project focusses on ARD solutions (hence the name cARDinal) using {cards}+{gtsummary}
-    
-    - Check out the progress at [https://pharmaverse.github.io/cardinal/](https://pharmaverse.github.io/cardinal/)
+    -   There is a lot there already, and we anticipate its first official release this Fall. <https://insightsengineering.github.io/crane/main/>
 
+-   Cardinal Initiative
+
+    -   Industry collaborative effort under pharmaverse that brings together pharmaceutical companies with the aspiration of building and open-sourcing a catalog of harmonized tables, listings, and graphs (TLGs) in clinical study reporting.
+
+    -   The project focusses on ARD solutions (hence the name cARDinal) using {cards}+{gtsummary}
+
+    -   Check out the progress at <https://pharmaverse.github.io/cardinal/>
 
 # ARDs for QC
 
 ## How to use ARDs for QC
 
-- The ARD framework makes QC a breeze 🌬️
+-   The ARD framework makes QC a breeze 🌬️
 
-- The ARD contains every statistic in a summary table or figure AND how that statistic is formatted.
+-   The ARD contains every statistic in a summary table or figure AND how that statistic is formatted.
 
-- You can fully QC a TLG by recreating the ARD and comparing the ARD to the one extracted from the TLG.
+-   You can fully QC a TLG by recreating the ARD and comparing the ARD to the one extracted from the TLG.
 
 ## Example: ARDs for QC
 
@@ -472,27 +459,24 @@ waldo::compare(
 )
 ```
 
-::: {.small}
-
+::: small
 We have plans to make these comparisons with less code.
-
 :::
 
 # ARDs + LLMs
 
 ## How can LLMs help us within the {cards}+{gtsummary} framework?
 
-- Due to the {gtsummary} package's popularity, the publicly available LLMs can be used to write code to create tables
+-   Due to the {gtsummary} package's popularity, the publicly available LLMs can be used to write code to create tables
 
-> Act as a statistical programmer within the pharmaceutical industry, and provide me code to create tables in the R language using the gtsummary package.
-
-> Using the ADSL data set as an input, please provide the code for creating a demographics table that is split by treatment arm. Include the variables AGE and AGEGR1. AGE is a continuous summary, and include the mean, standard deviation, median and IQR. AGEGR1 is a categorical variable and include the count and percent in the summary.
+> Act as a statistical programmer within the pharmaceutical industry, and provide me code to create tables in the R language using the gtsummary package.  
+Using the ADSL data set as an input, please provide the code for creating a demographics table that is split by treatment arm. Include the variables AGE and AGEGR1. AGE is a continuous summary, and include the mean, standard deviation, median and IQR. AGEGR1 is a categorical variable and include the count and percent in the summary.
 
 ## How can LLMs help us within the ARD framework?
 
 The result (using Gemini)!
 
-```r
+``` r
 # Load necessary packages
 # If you don't have gtsummary installed, uncomment and run:
 # install.packages("gtsummary")
@@ -609,137 +593,112 @@ tbl_ard |>
 
 ## How can LLMs help us within the ARD framework?
 
-Ask the LLM to write  draft summary for you.
+Ask the LLM to write draft summary for you.
 
 > Below you will find a JSON representation of the results in the table. Act as a medical writer working at a pharmaceutical company and write a brief summary of the results.
 
-::: {.fragment}
-
-::: {.small}
-
-::: {.scrollable-text}
-
+::::: fragment
+:::: small
+::: scrollable-text
 A total of 254 participants were enrolled in the study, distributed across three treatment arms: Placebo (N=86), Xanomeline High Dose (N=84), and Xanomeline Low Dose (N=84).
 
 Baseline demographics indicate that participants were generally similar across all treatment groups with respect to age. The mean age was approximately 75 years across the groups, with standard deviations ranging from 7.9 to 8.6 years. Specifically, the mean age (standard deviation) was 75.2 (8.6) years in the Placebo group, 74.4 (7.9) years in the Xanomeline High Dose group, and 75.7 (8.3) years in the Xanomeline Low Dose group. The median ages were also comparable: 76 years (IQR: 69, 82) for Placebo, 76 years (IQR: 70.5, 80) for Xanomeline High Dose, and 77.5 years (IQR: 71, 82) for Xanomeline Low Dose.
 
-Regarding age groups, the majority of participants in all treatment arms were over 64 years of age. Specifically, the proportion of participants aged >64 years was 83.7% (n=72) in the Placebo group, 86.9% (n=73) in the Xanomeline High Dose group, and 90.5% (n=76) in the Xanomeline Low Dose group. The proportion of participants aged 18-64 years was 16.3% (n=14) in the Placebo group, 13.1% (n=11) in the Xanomeline High Dose group, and 9.5% (n=8) in the Xanomeline Low Dose group. There were no participants under 18 years of age.
+Regarding age groups, the majority of participants in all treatment arms were over 64 years of age. Specifically, the proportion of participants aged \>64 years was 83.7% (n=72) in the Placebo group, 86.9% (n=73) in the Xanomeline High Dose group, and 90.5% (n=76) in the Xanomeline Low Dose group. The proportion of participants aged 18-64 years was 16.3% (n=14) in the Placebo group, 13.1% (n=11) in the Xanomeline High Dose group, and 9.5% (n=8) in the Xanomeline Low Dose group. There were no participants under 18 years of age.
 
 Overall, the demographic characteristics at baseline appear well-balanced across the treatment groups, suggesting that any observed differences in outcomes are less likely to be attributable to baseline age disparities.
-
 :::
+::::
+:::::
 
-:::
+## ARD Collaboration
 
-:::
+![](images/collaboration_logos.png)
 
 # Our Pilot
 
 ## Our ARD-based Pilot
 
-- We wanted to dip our toes into CDISC's Analysis Results Standard (ARS)
-  
-  - We did not try to implement the full model, just getting a taste
-  
-  - Using _some_ metadata to drive the creation of TLGs
-  
-  - Using an ARD-first approach to create our TLGs, e.g. using the {cards} R package to create ARDs, and the {gtsummary} package for tables
-  
-- Report on our experience! What would we change if we were to do it again?
+-   We wanted to dip our toes into CDISC's Analysis Results Standard (ARS)
+
+    -   We did not try to implement the full model, just getting a taste
+
+    -   Using *some* metadata to drive the creation of TLGs
+
+    -   Using an ARD-first approach to create our TLGs, e.g. using the {cards} R package to create ARDs, and the {gtsummary} package for tables
+
+-   Report on our experience! What would we change if we were to do it again?
 
 ## What we liked!
 
-- Using {cards}+{cardx}+{gtsummary}, we created every summary for a trial read-out. 🕺🕺🕺
+-   Using {cards}+{cardx}+{gtsummary}, we created every summary for a trial read-out. 🕺🕺🕺
 
-- These tools are general to allow us to create any table needed, whether it was a table of simple counts or complex statistical results.
+-   These tools are general to allow us to create any table needed, whether it was a table of simple counts or complex statistical results.
 
-- Nolan was the primary statistical programmer for this study. 
+-   Nolan was the primary statistical programmer for this study.
 
-    - We did not have time for proper training on the new {cards} and {cardx} packages, nor for the {gtsummary} package.
+    -   We did not have time for proper training on the new {cards} and {cardx} packages, nor for the {gtsummary} package.
 
-    - Despite no training, he was quickly able to pick up the packages and immediately begin using, which we attribute to the intuitive user interface. 🚀
+    -   Despite no training, he was quickly able to pick up the packages and immediately begin using, which we attribute to the intuitive user interface. 🚀
 
 ## What we liked!
 
-- We loved the ARD-based results, which made QC simple and straightforward.
+-   We loved the ARD-based results, which made QC simple and straightforward.
 
-    - A highly structured data frame of results is straightforward to QC compared to a summary table or figure.
+    -   A highly structured data frame of results is straightforward to QC compared to a summary table or figure.
 
-- The ARDs make re-use of the results simple as well.
-    
-- As long as we have both the ARD and the table/figure, we are happy with whatever order they are created.
-    
-## What we would do differently?
+-   The ARDs make re-use of the results simple as well.
 
-- As {gtsummary} runs on ARDs, we found the requirement of creating the ARD first, then using it to create the summary table more complex than the process needed to be.
-
-   - ARDs can be extracted directly from any {gtsummary} and in many cases it is sufficient to create the table directly and take the ARD from the table object.
+-   As long as we have both the ARD and the table/figure, we are happy with whatever order they are created.
 
 ## What we would do differently?
 
-- The full ARS model is metadata driven. This also means the metadata dictate the precise layout of the tables.
+-   As {gtsummary} runs on ARDs, we found the requirement of creating the ARD first, then using it to create the summary table more complex than the process needed to be.
 
-- We preferred to write an R script for the persnickety formatting, rather than making those specifications in a metadata format.
+    -   ARDs can be extracted directly from any {gtsummary} and in many cases it is sufficient to create the table directly and take the ARD from the table object.
 
-    - If a trial only reported "standard" tables, it would be much less of an issue to specify detailed meta data for layouts. But every trial (and in particular this pilot) has many bespoke tables not part of a standard library.
-    
-- We were still able to take advantage of the ARS attributes, such as tracability, re-use, and automation.
+## What we would do differently?
+
+-   The full ARS model is metadata driven. This also means the metadata dictate the precise layout of the tables.
+
+-   We preferred to write an R script for the persnickety formatting, rather than making those specifications in a metadata format.
+
+    -   If a trial only reported "standard" tables, it would be much less of an issue to specify detailed meta data for layouts. But every trial (and in particular this pilot) has many bespoke tables not part of a standard library.
+
+-   We were still able to take advantage of the ARS attributes, such as tracability, re-use, and automation.
 
 ## 
 
-::: {.larger}
-
+::: larger
 🕺🕺 ARD Team 🕺🕺
-
 :::
 
-::: {.v-center-container}
-
+::: v-center-container
 ![](images/coauthors.png)
-
 :::
 
 <!-- ####################### END OF SLIDES ######################### -->
 
-
-
-
-
-
-
-
-
-
 ## ARDs uses outside of the ARS
 
-:::{.incremental}
-
+::: incremental
 -   Rethinking QC
 
     -   Highly structured data frame of results is much simpler to QC compared to statistics in a summary table or figure.
-    
+
 -   Flexible data file types
 
     -   ARD can be saved as a dataset (rds, xpt, parquet, etc.), YAML, or JSON file
 
 -   ARDs integrate with the {gtsummary} package to create summary tables
-
 :::
-
-
-
-
-
-
 
 ## {cardx} t-test Example
 
-::: {.small}
+::: small
+-   We see the results like the mean difference, the confidence interval, and p-value as expected.
 
-- We see the results like the mean difference, the confidence interval, and p-value as expected.
-
-- And we also see the function's inputs, which is incredibly useful for re-use, e.g. we know the we did not use equal variances.
-
+-   And we also see the function's inputs, which is incredibly useful for re-use, e.g. we know the we did not use equal variances.
 :::
 
 ```{r}
@@ -751,16 +710,13 @@ pharmaverseadam::adsl |>
 
 ## {cardx} Regression
 
--   Includes functionality to summarize nearly every type of regression model in the R ecosystem: 
+-   Includes functionality to summarize nearly every type of regression model in the R ecosystem:
 
-::: {.small}
-
+::: small
 `r broom.helpers::supported_models$model` (and more)
-
 :::
 
 ## {cardx} Regression Example
-
 
 ```{r}
 #| message: true
@@ -792,15 +748,20 @@ tbl |>
 <!-- The `cardx::ard_regression()` does **a lot** for us in the background. -->
 
 <!-- - Identifies the variable from the regression terms (i.e. groups levels of the same variable) -->
+
 <!-- - Identifies reference groups from categorical covariates -->
+
 <!-- - Finds variable labels from the source data frames -->
+
 <!-- - Knows the total N of the model, the number of events, and can do the same for each level of categorical variables -->
+
 <!-- - Contextually aware of slopes, odds ratios, hazard ratios, and incidence rate ratios -->
+
 <!-- - And much _**much**_ more. -->
 
 ## When things go wrong 😱
 
-What happens when statistics are un-calculable? 
+What happens when statistics are un-calculable?
 
 ```{r}
 #| message: true
@@ -814,49 +775,35 @@ ard_gone_wrong <-
 ard_gone_wrong
 ```
 
-::: {.fragment}
-
-```r
+::: fragment
+``` r
 cards::print_ard_conditions(ard_gone_wrong)
 ```
 
 ![](images/ard-error-msg.png)
-
 :::
 
+## {gtsummary} extras
 
+-   {gtsummary} tables are composable, meaning complex tables can be cobbled together one piece at a time and combined.
 
+    -   many other functions to create common structures, such as, `tbl_continuous()`, `tbl_hierarchical()`,`tbl_cross()`, `tbl_wide_summary()`, and many more
 
+    -   `add_*()` functions will add additional columns/summary statistics to an existing table.
 
+    -   `tbl_merge()` and `tbl_stack()` combine tow more more tables
 
+    -   and many more functions available for creating beautiful tables!🤩
 
+-   Check out the PHUSE US Connect Workshop (*later today*) for more information!
 
-
-
-
-
+    -   <https://www.danieldsjoberg.com/ARD-PHUSE-workshop-2025/>
 
 ## {gtsummary} extras
 
-- {gtsummary} tables are composable, meaning complex tables can be cobbled together one piece at a time and combined.
+-   If the structured `tbl_*()` and `tbl_ard_*()` functions don't exactly meet your needs, use `as_gtsummary()`!
 
-    - many other functions to create common structures, such as, `tbl_continuous()`, `tbl_hierarchical()`,`tbl_cross()`, `tbl_wide_summary()`, and many more
-
-    - `add_*()` functions will add additional columns/summary statistics to an existing table.
-    
-    - `tbl_merge()` and `tbl_stack()` combine tow more more tables
-    
-    - and many more functions available for creating beautiful tables!🤩 
-
-- Check out the PHUSE US Connect Workshop (_later today_) for more information! 
-
-    - [https://www.danieldsjoberg.com/ARD-PHUSE-workshop-2025/](https://www.danieldsjoberg.com/ARD-PHUSE-workshop-2025/)
-
-## {gtsummary} extras
-
-- If the structured `tbl_*()` and `tbl_ard_*()` functions don't exactly meet your needs, use `as_gtsummary()`!
-
-- The `as_gtsummary()` function ingests a data frame and adds the {gtsummary} framework around it: great for listings and highly bespoke tables.
+-   The `as_gtsummary()` function ingests a data frame and adds the {gtsummary} framework around it: great for listings and highly bespoke tables.
 
 ```{r, echo=FALSE}
 theme_gtsummary_compact()
@@ -872,4 +819,3 @@ cards::ADAE[1:7, c("USUBJID", "AESOC", "AETERM", "AESEV")] |>
 ## {gtsummary} extras
 
 ![](images/gtsummary_rmarkdown.png)
-
