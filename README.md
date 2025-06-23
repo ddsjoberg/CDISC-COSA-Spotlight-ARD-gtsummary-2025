@@ -1,1 +1,1 @@
-# ARD PHUSE US Connect Talk 2025
+# CDISC COSA Spotlight Q2 2025
