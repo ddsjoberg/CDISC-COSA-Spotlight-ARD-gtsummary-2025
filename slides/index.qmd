@@ -156,7 +156,6 @@ The results from all these functions are entirely compatible with one another, a
 
 -   Exports ARD frameworks for statistical analyses from many packages
 
-::: larger
 ```         
   - {stats}
   - {car}
@@ -169,11 +168,12 @@ The results from all these functions are entirely compatible with one another, a
   - {survey}
   - {survival}
 ```
-:::
 
 -   This list is growing (rather quickly) 🌱
 
-::: aside
+-   Supports 40+ regression modeling types including {mmrm}
+
+::: small
 {cards} provides a general framework to easily implement *any* method. {cardx} provides a nicer user experience for common methods.
 :::
 
