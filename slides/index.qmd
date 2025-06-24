@@ -331,14 +331,19 @@ dplyr::filter(pharmaverseadam::adsl, SAFFL == "Y") |>
 
 -   General summaries; great for highly bespoke tables and listings
 
+## Print engines
+
+![](images/gtsummary_rmarkdown.png)
+
 ## Other {gtsummary} resources
 
-Best resource is the {gtsummary} website with almost 10 vignettes
+Best resource is the {gtsummary} website with ~10 vignettes
 
 ```{r}
 #| echo: false
 dplyr::tribble(
   ~venue, ~title, ~url_slides, ~url_video,
+  "`posit::conf(2024)`", "Tables for Research and Regulatory Submissions", "https://docs.google.com/presentation/d/e/2PACX-1vSKiwsqIwx1jZUBz-sHeIhDd3HkCd4d79jXhZBszOl2_ArMIP6eeq1r0fpOtHV4Ba0ZqkWluLO7bFuu/pub?start=false&loop=false&delayms=3000", "https://www.youtube.com/watch?v=oYA_DXzN40A",
   "2025 George Washington University Talk", "Clinical Reporting with {gtsummary}", "http://www.danieldsjoberg.com/gtsummary-george-washington-university-2025/", NA_character_,
   "R/Medicine 2022 Workshop", "Reporting with {gtsummary}", "https://www.danieldsjoberg.com/clinical-reporting-gtsummary-rmed/", NA_character_,
   "Weill Cornell Biostatistics/Computing Dept", "Presentation-ready Summary Tables with {gtsummary}", "https://www.danieldsjoberg.com/gtsummary-weill-cornell-presentation/#1", "https://youtu.be/tANo9E1SYJE",
@@ -358,7 +363,12 @@ dplyr::tribble(
   ) |>
   gt::sub_missing(missing_text = "") |>
   gt::cols_align(align = "center", columns = dplyr::contains("url")) |>
-  gt::tab_options(column_labels.hidden = TRUE)
+  gt::tab_options(column_labels.hidden = TRUE) |> 
+  gt::cols_width(c(3,4) ~ gt::pct(5)) |> 
+  gt::tab_style(
+    style = "vertical-align:center",
+    locations = gt::cells_body(columns = everything())
+  )
 ```
 
 ## {gtsummary} + Pharma Reporting 👷🏗️
@@ -370,6 +380,8 @@ dplyr::tribble(
     -   Includes function to make the most common reporting at Roche a breeze.
 
     -   There is a lot there already, and we anticipate its first official release this Fall. <https://insightsengineering.github.io/crane/main/>
+
+## {gtsummary} + Pharma Reporting 👷🏗️
 
 -   Cardinal Initiative
 
@@ -396,13 +408,15 @@ Begin by building a TLG (we saw this code earlier), then extract the ARD from th
 ```{r}
 #| output-location: column-fragment
 tbl_ard <- 
-  dplyr::filter(pharmaverseadam::adsl, SAFFL == "Y") |> 
+  pharmaverseadam::adsl |> 
+  dplyr::filter(SAFFL == "Y") |> 
   tbl_summary(
-    by = TRT01P,
     include = c(AGE, AGEGR1),
     type = AGE ~ "continuous2",
-    statistic = AGE ~ c("{mean} ({sd})", "{median} ({p25}, {p75})"),
-    digits = AGEGR1 ~ list(p = label_style_number(digits = 1, scale = 100))
+    statistic = 
+      AGE ~ c("{mean} ({sd})", 
+              "{median} ({p25}, {p75})"),
+    digits = AGEGR1 ~ list(p = 1)
   ) |> 
   gather_ard() |> 
   purrr::pluck("tbl_summary") |> 
@@ -418,15 +432,30 @@ Now, create the ARD for the table
 #| output-location: column-fragment
 library(cards)
 qc_ard <-
-  dplyr::filter(pharmaverseadam::adsl, SAFFL == "Y") |> 
+  pharmaverseadam::adsl |> 
+  dplyr::filter(SAFFL == "Y") |> 
   ard_stack(
-    .by = TRT01P,
     ard_continuous(
       variables = AGE, 
-      statistic = ~continuous_summary_fns(c("mean", "sd", "median", "p25", "p75"))
+      statistic = 
+        ~continuous_summary_fns(
+          c("mean", "sd", "median", 
+            "p25", "p75"))
     ),
-    ard_categorical(variables = AGEGR1)
+    ard_categorical(
+      variables = AGEGR1
+    )
   ) |> 
+  apply_fmt_fn()
+qc_ard
+```
+
+## Example: ARDs for QC
+
+```{r}
+#| include: false
+qc_ard <-
+  qc_ard |> 
   update_ard_fmt_fn(
     stat_names = c("mean", "sd", "median", "p25", "p75"),
     fmt_fn = label_style_number(digits = 0)
@@ -435,15 +464,13 @@ qc_ard <-
     stat_names = "p",
     fmt_fn = label_style_number(digits = 1, scale = 100)
   ) |> 
-  apply_fmt_fn()
-qc_ard
+  apply_fmt_fn(replace = TRUE)
 ```
-
-## Example: ARDs for QC
 
 Let's compare 🕺
 
 ```{r}
+#| code-line-numbers: "1,2,7,13"
 waldo::compare(
   tbl_ard |> 
     dplyr::filter(variable %in% c("AGE", "AGEGR1"), context %in% c("continuous", "categorical")) |> 
@@ -467,14 +494,14 @@ We have plans to make these comparisons with less code.
 
 ## How can LLMs help us within the {cards}+{gtsummary} framework?
 
--   Due to the {gtsummary} package's popularity, the publicly available LLMs can be used to write code to create tables
+-   {gtsummary} is a widely used package, the publicly available LLMs write code out of the box: no additional training needed.
 
 > Act as a statistical programmer within the pharmaceutical industry, and provide me code to create tables in the R language using the gtsummary package.  
 Using the ADSL data set as an input, please provide the code for creating a demographics table that is split by treatment arm. Include the variables AGE and AGEGR1. AGE is a continuous summary, and include the mean, standard deviation, median and IQR. AGEGR1 is a categorical variable and include the count and percent in the summary.
 
 ## How can LLMs help us within the ARD framework?
 
-The result (using Gemini)!
+The result! (using Gemini)
 
 ``` r
 # Load necessary packages
@@ -583,7 +610,7 @@ demographics_table
 
 ARDs can be represented in language-agnostic formats like JSON and YAML.
 
-An entire table has a representation that is readily digestable by your favorite LLM.
+A summary table has a representation that is readily digestible by your favorite LLM.
 
 ```{r}
 tbl_ard |> 
@@ -614,6 +641,8 @@ Overall, the demographic characteristics at baseline appear well-balanced across
 ## ARD Collaboration
 
 ![](images/collaboration_logos.png)
+
+# Continue for Extra Slides
 
 # Our Pilot
 
