@@ -88,7 +88,7 @@
     "href": "slides/index.html#cardx-1",
     "title": "ARD-based Reporting in R with {cards} and {gtsummary} packages",
     "section": "{cardx}",
-    "text": "{cardx}\n\nExports ARD frameworks for statistical analyses from many packages\n\n\n  - {stats}\n  - {car}\n  - {effectsize}\n  - {emmeans}\n  - {geepack}\n  - {lme4}\n  - {parameters}\n  - {smd}\n  - {survey}\n  - {survival}\n\n\nThis list is growing (rather quickly) 🌱\n\n\n\n{cards} provides a general framework to easily implement any method. {cardx} provides a nicer user experience for common methods."
+    "text": "{cardx}\n\nExports ARD frameworks for statistical analyses from many packages\n\n  - {stats}\n  - {car}\n  - {effectsize}\n  - {emmeans}\n  - {geepack}\n  - {lme4}\n  - {parameters}\n  - {smd}\n  - {survey}\n  - {survival}\n\nThis list is growing (rather quickly) 🌱\nSupports 40+ regression modeling types including {mmrm}\n\n\n{cards} provides a general framework to easily implement any method. {cardx} provides a nicer user experience for common methods."
   },
   {
     "objectID": "slides/index.html#other-cards-resources",
