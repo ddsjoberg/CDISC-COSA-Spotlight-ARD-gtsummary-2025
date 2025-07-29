@@ -11,7 +11,7 @@ website:
   description: "2025 PHUSE US Connect Talk"
   favicon: "images/cards-cardx-gtsummary-hex.png"
 
-  repo-url: https://github.com/ddsjoberg/ARD-PHUSE-talk-2025
+  repo-url: https://github.com/ddsjoberg/CDISC-COSA-Spotlight-ARD-gtsummary-2025
   repo-actions: [edit, issue]
 
   page-footer:
@@ -25,7 +25,7 @@ website:
     align: center
     tools:
       - icon: github
-        href: https://github.com/ddsjoberg/ARD-PHUSE-talk-2025
+        href: https://github.com/ddsjoberg/CDISC-COSA-Spotlight-ARD-gtsummary-2025
         text: GitHub
     style: docked
     contents:

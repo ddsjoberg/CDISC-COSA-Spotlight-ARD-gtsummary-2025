@@ -569,7 +569,6 @@ demographics_table <-
     # To combine mean (SD) and median (IQR) into a single row, you would list them separated by a comma
     # in the statistic argument.
     digits = all_continuous() ~ 1, # One decimal place for continuous variables
-    sort = list(AGEGR1 = ~ rtf_order_stat_level) # Ensure age groups are sorted correctly
   ) %>%
   add_n() %>% # Add column for total N
   add_p() %>% # Add p-value for group comparison (optional, but good for demographics)
